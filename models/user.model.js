@@ -25,6 +25,10 @@ const userSchema = mongoose.Schema({
     type: String,
     required: false,
   },
+  score: {
+    type: Number,
+    required: false,
+  },
 });
 
 const User = mongoose.model("users", userSchema);

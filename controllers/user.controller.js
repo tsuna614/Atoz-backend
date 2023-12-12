@@ -12,8 +12,11 @@ const userController = {
   },
   getUserById: async (req, res, next) => {
     try {
+      // THIS IS FIND BY userId, NOT BY _id
       const { id } = req.params;
-      const user = await User.findById(id);
+      const user = await User.find({
+        userId: id,
+      });
       res.status(200).json(user);
     } catch (err) {
       console.log(err);
