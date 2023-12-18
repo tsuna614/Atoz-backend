@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/user.controller");
+const upload = require("../middleware/multer.middleware");
 
 // get all users
 router.get("/getAllUsers", userController.getAllUsers);
@@ -19,5 +20,13 @@ router.delete("/deleteUserByEmail/:email", userController.deleteUserByEmail);
 
 // edit user by id
 router.put("/editUserById/:id", userController.editUserById);
+
+router.post(
+  "/uploadImage/:id",
+  upload.single("image"),
+  userController.uploadImage
+);
+
+router.get("/getProfileImage/:id", userController.getImage);
 
 module.exports = router;

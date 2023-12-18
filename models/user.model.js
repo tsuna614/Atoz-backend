@@ -29,6 +29,10 @@ const userSchema = mongoose.Schema({
     type: Number,
     required: false,
   },
+  profileImage: {
+    type: Buffer,
+    required: false,
+  },
 });
 
 const User = mongoose.model("users", userSchema);
