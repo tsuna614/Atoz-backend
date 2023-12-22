@@ -21,12 +21,13 @@ router.delete("/deleteUserByEmail/:email", userController.deleteUserByEmail);
 // edit user by id
 router.put("/editUserById/:id", userController.editUserById);
 
-router.post(
-  "/uploadImage/:id",
-  upload.single("image"),
-  userController.uploadImage
-);
+// // get and post user profile image
+// router.post(
+//   "/uploadImage/:id",
+//   upload.single("image"),
+//   userController.uploadImage
+// );
 
-router.get("/getProfileImage/:id", userController.getImage);
+// router.get("/getProfileImage/:id", userController.getImage);
 
 module.exports = router;

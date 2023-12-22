@@ -30,8 +30,12 @@ const userSchema = mongoose.Schema({
     required: false,
   },
   profileImage: {
-    type: Buffer,
+    type: String,
     required: false,
+  },
+  userStage: {
+    type: Number,
+    required: true,
   },
 });
 

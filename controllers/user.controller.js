@@ -67,44 +67,44 @@ const userController = {
       res.status(500).json({ message: err.message });
     }
   },
-  uploadImage: async (req, res, next) => {
-    try {
-      const image = req.file;
-      console.log(image);
+  // uploadImage: async (req, res, next) => {
+  //   try {
+  //     const image = req.file;
+  //     console.log(image);
 
-      const id = req.params.id;
-      const user = await User.findOneAndUpdate(
-        { userId: id },
-        {
-          profileImage: image.buffer,
-          score: 200,
-        },
-        {
-          new: true,
-        }
-      );
+  //     const id = req.params.id;
+  //     const user = await User.findOneAndUpdate(
+  //       { userId: id },
+  //       {
+  //         profileImage: image.buffer,
+  //         score: 200,
+  //       },
+  //       {
+  //         new: true,
+  //       }
+  //     );
 
-      res.status(200).json(image);
-    } catch (err) {
-      res.status(500).json({ message: err.message });
-    }
-  },
-  getImage: async (req, res, next) => {
-    try {
-      const id = req.params.id;
-      const user = await User.findOne({ userId: id });
-      if (!user) {
-        return res.status(404).json({ message: "User not found" });
-      }
-      if (!user.profileImage) {
-        return res.status(404).json({ message: "Image not found" });
-      }
-      res.set("Content-Type", "image/jpg");
-      res.status(200).send(user.profileImage);
-    } catch (err) {
-      res.status(500).json({ message: err.message });
-    }
-  },
+  //     res.status(200).json(image);
+  //   } catch (err) {
+  //     res.status(500).json({ message: err.message });
+  //   }
+  // },
+  // getImage: async (req, res, next) => {
+  //   try {
+  //     const id = req.params.id;
+  //     const user = await User.findOne({ userId: id });
+  //     if (!user) {
+  //       return res.status(404).json({ message: "User not found" });
+  //     }
+  //     if (!user.profileImage) {
+  //       return res.status(404).json({ message: "Image not found" });
+  //     }
+  //     res.set("Content-Type", "image/jpg");
+  //     res.status(200).send(user.profileImage);
+  //   } catch (err) {
+  //     res.status(500).json({ message: err.message });
+  //   }
+  // },
 };
 
 module.exports = userController;
