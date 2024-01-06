@@ -8,6 +8,8 @@ require("dotenv").config();
 const bookRoute = require("./routes/book.route");
 const userRoute = require("./routes/user.route");
 const quizRoute = require("./routes/quiz.route");
+const readingRoute = require("./routes/readingQuiz.route");
+const multipleChoiceRoute = require("./routes/readingMultipleChoice.route");
 
 mongoose.connect(process.env.DATABASE_URL);
 const db = mongoose.connection;
@@ -29,6 +31,8 @@ app.use(express.json());
 app.use("/v1/book", bookRoute);
 app.use("/v1/user", userRoute);
 app.use("/v1/quiz", quizRoute);
+app.use("/v1/readingQuiz", readingRoute);
+app.use("/v1/readingMultipleChoice", multipleChoiceRoute);
 
 app.get("/", (req, res, next) => {
   res.render("home.ejs");

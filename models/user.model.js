@@ -25,6 +25,10 @@ const userSchema = mongoose.Schema({
     type: String,
     required: false,
   },
+  progression: {
+    type: Number,
+    required: false,
+  },
   score: {
     type: Number,
     required: false,
@@ -36,6 +40,10 @@ const userSchema = mongoose.Schema({
   userStage: {
     type: Number,
     required: true,
+  },
+  userType: {
+    type: String,
+    required: false,
   },
 });
 
