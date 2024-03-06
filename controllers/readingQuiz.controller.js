@@ -61,15 +61,15 @@ const quizController = {
   },
   getAllQuizzesWithCondition: async (req, res, next) => {
     try {
-      var difficulty = 0;
+      var difficulty = 1;
       if (req.body.userProgression >= 200) {
-        difficulty = 1;
-      }
-      if (req.body.userProgression >= 500) {
         difficulty = 2;
       }
-      if (req.body.userProgression >= 1000) {
+      if (req.body.userProgression >= 500) {
         difficulty = 3;
+      }
+      if (req.body.userProgression >= 1000) {
+        difficulty = 4;
       }
       const quizzes = await Quiz.find({
         language: req.body.language,
