@@ -18,6 +18,9 @@ router.post("/addUser", userController.addUser);
 // delete user by email
 router.delete("/deleteUserByEmail/:email", userController.deleteUserByEmail);
 
+// delete user by id
+router.delete("/deleteUserById/:id", userController.deleteUserById);
+
 // edit user by id
 router.put("/editUserById/:id", userController.editUserById);
 
