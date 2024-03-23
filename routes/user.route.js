@@ -24,6 +24,15 @@ router.delete("/deleteUserById/:id", userController.deleteUserById);
 // edit user by id
 router.put("/editUserById/:id", userController.editUserById);
 
+// add friends between 2 users
+router.put("/addFriend/:id1/:id2", userController.addFriend);
+
+// edit all users
+router.put("/editAllUsers", userController.editAllUsers);
+
+// remove a friend of both users from their userFriends
+router.put("/removeFriend/:id1/:id2", userController.removeFriend);
+
 // // get and post user profile image
 // router.post(
 //   "/uploadImage/:id",

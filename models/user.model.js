@@ -35,7 +35,7 @@ const userSchema = mongoose.Schema({
   },
   profileImage: {
     type: String,
-    required: false,
+    required: true,
   },
   userStage: {
     type: Number,
@@ -44,6 +44,14 @@ const userSchema = mongoose.Schema({
   userType: {
     type: String,
     required: false,
+  },
+  userFriends: {
+    type: Array,
+    required: true,
+  },
+  userState: {
+    type: String,
+    required: true,
   },
 });
 

@@ -12,9 +12,7 @@ const readingRoute = require("./routes/readingQuiz.route");
 const multipleChoiceRoute = require("./routes/readingMultipleChoice.route");
 const userScoreRoute = require("./routes/userScore.route");
 
-mongoose.connect(
-  "mongodb+srv://thedarkspiritaway:ci0ijEu14OB36epX@atoz.rwfanqk.mongodb.net/Atoz-API?retryWrites=true&w=majority"
-);
+mongoose.connect(process.env.DATABASE_URL);
 const db = mongoose.connection;
 db.on("error", (error) => {
   console.log(error);
