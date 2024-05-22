@@ -1,4 +1,16 @@
 const mongoose = require("mongoose");
+// const Stage = require("./stage.model");
+
+const stageSchema = mongoose.Schema({
+  star: {
+    type: Number,
+    required: true,
+  },
+  clearTime: {
+    type: Number,
+    required: true,
+  },
+});
 
 const userSchema = mongoose.Schema({
   userId: {
@@ -38,7 +50,7 @@ const userSchema = mongoose.Schema({
     required: true,
   },
   userStage: {
-    type: Number,
+    type: [[stageSchema]],
     required: true,
   },
   userType: {
@@ -49,10 +61,10 @@ const userSchema = mongoose.Schema({
     type: Array,
     required: true,
   },
-  userState: {
-    type: String,
-    required: true,
-  },
+  // userState: {
+  //   type: String,
+  //   required: true,
+  // },
 });
 
 const User = mongoose.model("users", userSchema);
