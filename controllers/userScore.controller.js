@@ -1,5 +1,5 @@
 const { log } = require("console");
-const User = require("../models/userScore.model");
+const User = require("../models/user-models/userScore.model");
 const path = require("path");
 const fs = require("fs");
 

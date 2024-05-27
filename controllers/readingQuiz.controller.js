@@ -1,4 +1,4 @@
-const Quiz = require("../models/readingQuiz.model");
+const Quiz = require("../models/quiz-models/readingQuiz.model");
 
 const quizController = {
   getQuizPage: async (req, res, next) => {
