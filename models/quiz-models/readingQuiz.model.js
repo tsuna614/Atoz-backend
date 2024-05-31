@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const ReadingMultipleChoice = require("./readingMultipleChoiceQuiz.model");
 
 const quizSchema = mongoose.Schema({
   title: {

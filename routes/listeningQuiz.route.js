@@ -1,13 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const quizController = require("../controllers/quiz.controller");
-
-// get pages
-router.get("/", quizController.getQuizPage);
-
-router.get("/add-quiz", (req, res, next) => {
-  res.render("add-quiz.ejs");
-});
+const quizController = require("../controllers/listeningQuiz.controller");
 
 // get all quizzes
 router.get("/getAllQuizzes", quizController.getAllQuizzes);
@@ -15,16 +8,20 @@ router.get("/getAllQuizzes", quizController.getAllQuizzes);
 // get quiz by id
 router.get("/getQuizById/:id", quizController.getQuizById);
 
-// // find quiz by email
-// router.get("/getQuizByEmail/:email", quizController.getQuizByEmail);
-
 // add 1 quiz
+// router.post("/addQuiz", quizController.addQuiz);
 router.post("/addQuiz", quizController.addQuiz);
 
 // delete quiz by id
 router.delete("/deleteQuizById/:id", quizController.deleteQuizById);
 
-// delete quiz button
-router.post("/deleteQuizButton", quizController.deleteQuizButton);
+// get all quizzes with condition
+router.post(
+  "/getAllQuizzesWithCondition",
+  quizController.getAllQuizzesWithCondition
+);
+
+// generate quiz
+router.post("/generateQuiz", quizController.generateQuiz);
 
 module.exports = router;
