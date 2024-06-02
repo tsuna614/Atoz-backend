@@ -12,13 +12,14 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+// openai configuration
 const openai = new OpenAI({
   organization: process.env.ORGANIZATION,
   project: process.env.PROJECT,
   apiKey: process.env.API_KEY,
 });
 
-const speechFile = path.resolve("./speech2.mp3");
+const speechFile = path.resolve("./speech.mp3");
 
 async function generateAudio(listeningSentence, id) {
   const mp3 = await openai.audio.speech.create({
@@ -72,4 +73,18 @@ async function generateQuiz(message) {
   return [completion.choices[0].message.content, generatedUid];
 }
 
-module.exports = { generateQuiz };
+async function speechToText(fileName) {
+  const audioFilePath = path.join(__dirname, "..", "assets", "temp" + fileName);
+
+  console.log(audioFilePath);
+
+  const transcription = await openai.audio.transcriptions.create({
+    file: fs.createReadStream(audioFilePath),
+    model: "whisper-1",
+    response_format: "text",
+  });
+
+  console.log(transcription);
+}
+
+module.exports = { generateQuiz, speechToText };

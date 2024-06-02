@@ -155,28 +155,30 @@ const userController = {
       res.status(500).json({ message: err.message });
     }
   },
-  // uploadImage: async (req, res, next) => {
-  //   try {
-  //     const image = req.file;
-  //     console.log(image);
+  uploadImage: async (req, res, next) => {
+    try {
+      const image = req.file;
+      console.log(image);
 
-  //     const id = req.params.id;
-  //     const user = await User.findOneAndUpdate(
-  //       { userId: id },
-  //       {
-  //         profileImage: image.buffer,
-  //         score: 200,
-  //       },
-  //       {
-  //         new: true,
-  //       }
-  //     );
+      // write image
 
-  //     res.status(200).json(image);
-  //   } catch (err) {
-  //     res.status(500).json({ message: err.message });
-  //   }
-  // },
+      // const id = req.params.id;
+      // const user = await User.findOneAndUpdate(
+      //   { userId: id },
+      //   {
+      //     profileImage: image.buffer,
+      //     score: 200,
+      //   },
+      //   {
+      //     new: true,
+      //   }
+      // );
+
+      res.status(200).json(image);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  },
   // getImage: async (req, res, next) => {
   //   try {
   //     const id = req.params.id;
