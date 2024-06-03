@@ -36,10 +36,6 @@ app.use("/v1/listeningQuiz", listeningQuizRoute);
 app.use("/v1/speakingQuiz", speakingQuizRoute);
 app.use("/v1/userScore", userScoreRoute);
 
-app.get("/", (req, res, next) => {
-  res.render("home.ejs");
-});
-
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
