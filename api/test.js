@@ -82,9 +82,12 @@ async function speechToText(fileName) {
     file: fs.createReadStream(audioFilePath),
     model: "whisper-1",
     response_format: "text",
+    language: "en",
   });
 
   console.log(transcription);
+
+  return transcription;
 }
 
 module.exports = { generateQuiz, speechToText };

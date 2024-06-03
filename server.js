@@ -9,6 +9,7 @@ const userRoute = require("./routes/user.route");
 const readingRoute = require("./routes/readingQuiz.route");
 const multipleChoiceRoute = require("./routes/readingMultipleChoice.route");
 const listeningQuizRoute = require("./routes/listeningQuiz.route");
+const speakingQuizRoute = require("./routes/speakingQuiz.route");
 const userScoreRoute = require("./routes/userScore.route");
 
 mongoose.connect(process.env.MONGODB_URI);
@@ -32,6 +33,7 @@ app.use("/v1/user", userRoute);
 app.use("/v1/readingQuiz", readingRoute);
 app.use("/v1/readingMultipleChoice", multipleChoiceRoute);
 app.use("/v1/listeningQuiz", listeningQuizRoute);
+app.use("/v1/speakingQuiz", speakingQuizRoute);
 app.use("/v1/userScore", userScoreRoute);
 
 app.get("/", (req, res, next) => {
