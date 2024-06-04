@@ -1,5 +1,6 @@
 const Quiz = require("../models/quiz-models/listeningQuiz.model");
 const { generateQuiz } = require("../api/test.js");
+const { deleteAudio } = require("../api/cloudinary.js");
 
 const quizController = {
   getAllQuizzes: async (req, res, next) => {
@@ -36,6 +37,9 @@ const quizController = {
   deleteQuizById: async (req, res, next) => {
     try {
       const id = req.params.id;
+      const quiz = await Quiz.findById(id);
+      console.log(quiz["publicId"]);
+      deleteAudio(quiz["publicId"]);
       await Quiz.findByIdAndDelete(id);
       res
         .status(200)
