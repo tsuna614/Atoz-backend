@@ -11,6 +11,7 @@ const multipleChoiceRoute = require("./routes/readingMultipleChoice.route");
 const listeningQuizRoute = require("./routes/listeningQuiz.route");
 const speakingQuizRoute = require("./routes/speakingQuiz.route");
 const userScoreRoute = require("./routes/userScore.route");
+const loggingMiddleware = require("./middleware/logging.middleware");
 
 mongoose.connect(process.env.MONGODB_URI);
 const db = mongoose.connection;
@@ -28,6 +29,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.json());
+
+app.use(loggingMiddleware);
 
 app.use("/v1/user", userRoute);
 app.use("/v1/readingQuiz", readingRoute);

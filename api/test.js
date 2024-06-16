@@ -21,10 +21,10 @@ const openai = new OpenAI({
 
 const speechFile = path.resolve("./speech.mp3");
 
-async function generateAudio(listeningSentence, id) {
+async function generateAudio(listeningSentence, voice, id) {
   const mp3 = await openai.audio.speech.create({
     model: "tts-1",
-    voice: "alloy",
+    voice: voice,
     input: listeningSentence,
     // "Next week, I'm going to the first international conference on AI in the metaverse. I'm excited to meet other AI researchers and learn about the latest developments in AI. I'll be presenting my research on AI in virtual worlds and how it can be used to create more immersive and interactive experiences. I hope to get feedback from other researchers and collaborate on future projects. I'm also looking forward to exploring the metaverse and seeing how AI is being used to create new and exciting virtual worlds. I'll be sure to share my experiences and insights with you when I get back.",
   });
@@ -46,7 +46,7 @@ async function generateAudio(listeningSentence, id) {
   );
 }
 
-async function generateQuiz(message) {
+async function generateQuiz(message, voice) {
   const completion = await openai.chat.completions.create({
     messages: [
       {
@@ -68,6 +68,7 @@ async function generateQuiz(message) {
   const generatedUid = uuid.v4();
   await generateAudio(
     JSON.parse(completion.choices[0].message.content).fullSentence,
+    voice,
     generatedUid
   );
   return [completion.choices[0].message.content, generatedUid];

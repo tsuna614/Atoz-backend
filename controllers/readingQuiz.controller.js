@@ -32,7 +32,7 @@ const quizController = {
   addQuiz: async (req, res, next) => {
     try {
       const quiz = await Quiz.create(req.body);
-      res.status(200);
+      res.status(200).json({ message: "Successfully added quiz" });
     } catch (err) {
       console.log(err);
       res.status(500).json({ message: err.message });
@@ -76,6 +76,18 @@ const quizController = {
         difficulty: difficulty,
       });
       res.status(200).json(quizzes);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ message: err.message });
+    }
+  },
+  editQuizById: async (req, res, next) => {
+    try {
+      const id = req.params;
+      const quiz = await Quiz.findByIdAndUpdate(id, req.body, {
+        new: true,
+      });
+      console.log(quiz);
     } catch (err) {
       console.log(err);
       res.status(500).json({ message: err.message });

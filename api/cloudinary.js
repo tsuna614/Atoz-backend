@@ -12,6 +12,20 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+async function uploadAudio(audioFile, id) {
+  cloudinary.uploader.upload(
+    audioFile,
+    { resource_type: "video", folder: "audio", public_id: id },
+    function (error, result) {
+      if (error) {
+        console.error("Error uploading to Cloudinary:", error);
+      } else {
+        console.log("Upload successful:", result);
+      }
+    }
+  );
+}
+
 async function deleteAudio(publicId) {
   try {
     // Use the Cloudinary SDK to delete the file
@@ -25,5 +39,6 @@ async function deleteAudio(publicId) {
 }
 
 module.exports = {
+  uploadAudio,
   deleteAudio,
 };

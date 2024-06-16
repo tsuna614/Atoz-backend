@@ -33,4 +33,7 @@ router.delete("/deleteQuizById/:id", quizController.deleteQuizById);
 // delete quiz button
 router.post("/deleteQuizButton", quizController.deleteQuizButton);
 
+// update quiz by id
+router.put("/editQuizById/:id", quizController.editQuizById);
+
 module.exports = router;

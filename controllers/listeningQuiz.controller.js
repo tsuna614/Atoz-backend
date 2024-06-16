@@ -72,7 +72,8 @@ const quizController = {
   },
   generateQuiz: async (req, res, next) => {
     try {
-      const response = await generateQuiz(req.body.content);
+      // console.log(req.body.voice);
+      const response = await generateQuiz(req.body.content, req.body.voice);
       console.log(response);
       const newQuiz = {
         fullSentence: JSON.parse(response[0]).fullSentence,
